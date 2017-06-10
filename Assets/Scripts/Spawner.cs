@@ -21,18 +21,20 @@ public class Spawner : MonoBehaviour {
   void Update() {
     SetCameraDimensions();
 
-    var prefab = prefabs[Random.Range(0, prefabs.Length)];
+    var prefab = prefabs[0];
     var renderer = prefab.GetComponent<SpriteRenderer>();
+    var prefabHeight = renderer.sprite.bounds.size.y;
 
     var top = Camera.main.transform.position.y + (cameraHeight / 2f);
 
     var bottomItem = items.LastOrDefault();
     if (bottomItem) {
-      top = bottomItem.transform.position.y - renderer.sprite.bounds.size.y;
+      top = bottomItem.transform.position.y - prefabHeight;
     }
 
-    var bottom = Camera.main.transform.position.y - (cameraHeight / 2f) - renderer.sprite.bounds.size.y;
-    for (var y = top; y > bottom; y -= renderer.sprite.bounds.size.y) {
+    var bottom = Camera.main.transform.position.y - (cameraHeight / 2f) - prefabHeight;
+    for (var y = top; y > bottom; y -= prefabHeight) {
+      prefab = prefabs[Random.Range(0, prefabs.Length)];
       GameObject instance = Instantiate(prefab, new Vector3(transform.position.x, y, 0f), Quaternion.identity);
       items.Add(instance);
     }
