@@ -31,7 +31,7 @@ public class Spawner : MonoBehaviour {
       top = bottomItem.transform.position.y - renderer.sprite.bounds.size.y;
     }
 
-    var bottom = Camera.main.transform.position.y - (cameraHeight / 2f);
+    var bottom = Camera.main.transform.position.y - (cameraHeight / 2f) - renderer.sprite.bounds.size.y;
     for (var y = top; y > bottom; y -= renderer.sprite.bounds.size.y) {
       GameObject instance = Instantiate(prefab, new Vector3(transform.position.x, y, 0f), Quaternion.identity);
       items.Add(instance);
