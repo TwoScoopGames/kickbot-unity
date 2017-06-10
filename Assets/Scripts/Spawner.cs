@@ -9,6 +9,7 @@ public class Spawner : MonoBehaviour {
 
   private float cameraWidth;
   private float cameraHeight;
+  private List<GameObject> items = new List<GameObject>();
 
   // Use this for initialization
   void Start() {
@@ -17,10 +18,12 @@ public class Spawner : MonoBehaviour {
     var prefab = prefabs[Random.Range(0, prefabs.Length)];
     var renderer = prefab.GetComponent<SpriteRenderer>();
 
+    items = new List<GameObject>();
     var top = Camera.main.transform.position.y - (cameraHeight / 2f);
     var bottom = Camera.main.transform.position.y + (cameraHeight / 2f);
     for (var y = top; y < bottom; y += renderer.sprite.bounds.size.y) {
       GameObject instance = Instantiate(prefab, new Vector3(0, y, 0f), Quaternion.identity);
+      items.Add(instance);
     }
   }
 
