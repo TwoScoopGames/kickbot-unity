@@ -4,18 +4,33 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-  private bool onWall = true;
   private Movement2D movement;
+  private SpriteRenderer renderer;
+
+  private bool onWall = true;
   private float leftJumpTime = -1;
   private float rightJumpTime = -1;
 
   // Use this for initialization
   void Start () {
     movement = GetComponent<Movement2D>();
+    renderer = GetComponent<SpriteRenderer>();
   }
 
   private float Oscillate(float current, float period) {
     return Mathf.Sin(current / period * Mathf.PI);
+  }
+
+  void OnTriggerEnter2D(Collider2D other) {
+    if (onWall) {
+      return;
+    }
+    if (other.gameObject.tag == "Wall" || other.gameObject.tag == "Window") {
+      movement.velocity.x = 0;
+      movement.velocity.y = 0;
+      onWall = true;
+      renderer.flipX = !renderer.flipX;
+    }
   }
 
   // Update is called once per frame
