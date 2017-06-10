@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 95879305309269384}
   m_Layer: 0
   m_Name: Window Scientist 3 Left
-  m_TagString: Untagged
+  m_TagString: Window
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

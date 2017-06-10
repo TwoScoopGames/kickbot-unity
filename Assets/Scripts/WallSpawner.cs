@@ -29,14 +29,18 @@ public class WallSpawner : MonoBehaviour {
     var top = cameraTop;
 
     var bottomItem = items.LastOrDefault();
+    var bottomItemTag = "Wall";
     if (bottomItem) {
       top = bottomItem.transform.position.y - wallHeight;
+      bottomItemTag = bottomItem.tag;
     }
 
     var bottom = Camera.main.transform.position.y - (cameraHeight / 2f) - (wallHeight / 2f);
 
     for (var y = top; y > bottom; y -= wallHeight) {
-      var prefab = walls[Random.Range(0, walls.Length)];
+      var windowOrWall = Random.RandomRange(0f, 1f) > 0.9f ? windows : walls;
+      var possibilities = bottomItemTag == "Wall" ? windowOrWall : walls;
+      var prefab = possibilities[Random.Range(0, possibilities.Length)];
       GameObject instance = Instantiate(prefab, new Vector3(transform.position.x, y, 0f), Quaternion.identity);
       items.Add(instance);
     }
