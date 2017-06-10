@@ -269,6 +269,8 @@ MonoBehaviour:
   prefabs:
   - {fileID: 1062616001916332, guid: d3851c85cf845495fae0c92a319c8941, type: 2}
   - {fileID: 1893300499523376, guid: 4870d3e58cc3f4da98cbc94343189102, type: 2}
+  - {fileID: 1260414715691896, guid: 0c0d318acc0dc43c9a5c2b0578a2584f, type: 2}
+  - {fileID: 1659733670729024, guid: 0d29d7a2737324b0c973674bc8809091, type: 2}
 --- !u!4 &1788819793
 Transform:
   m_ObjectHideFlags: 0
@@ -276,7 +278,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1788819791}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 112.10759, z: 0}
+  m_LocalPosition: {x: -88, y: 112.10759, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
