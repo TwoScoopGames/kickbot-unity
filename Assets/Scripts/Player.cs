@@ -6,10 +6,16 @@ public class Player : MonoBehaviour {
 
   private bool onWall = true;
   private Movement2D movement;
+  private float leftJumpTime = -1;
+  private float rightJumpTime = -1;
 
   // Use this for initialization
   void Start () {
     movement = GetComponent<Movement2D>();
+  }
+
+  private float Oscillate(float current, float period) {
+    return Mathf.Sin(current / period * Mathf.PI);
   }
 
   // Update is called once per frame
@@ -19,6 +25,14 @@ public class Player : MonoBehaviour {
     var right = axis > 0;
 
     if (!onWall) {
+      if (leftJumpTime >= 0 && leftJumpTime <= 0.2f) {
+        leftJumpTime += Time.deltaTime;
+        movement.velocity.x = Oscillate(leftJumpTime + 0.1f, 0.2f) * 1000f / 3f;
+      }
+      if (rightJumpTime >= 0 && rightJumpTime <= 0.2f) {
+        rightJumpTime += Time.deltaTime;
+        movement.velocity.x = -Oscillate(rightJumpTime + 0.1f, 0.2f) * 1000f / 3f;
+      }
       return;
     }
 
@@ -33,6 +47,7 @@ public class Player : MonoBehaviour {
     if (left) {
       if (wallIsOnLeft) {
         // sin wave bullshit
+        leftJumpTime = 0;
       } else {
         movement.velocity.x = -333.333f;
       }
@@ -44,6 +59,7 @@ public class Player : MonoBehaviour {
         movement.velocity.x = 333.333f;
       } else {
         // sine wave bullshit
+        rightJumpTime = 0;
       }
       movement.velocity.y = 500;
       onWall = false;
