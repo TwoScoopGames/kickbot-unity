@@ -30,6 +30,8 @@ public class Player : MonoBehaviour {
       movement.velocity.y = 0;
       onWall = true;
       renderer.flipX = !renderer.flipX;
+      leftJumpTime = -1;
+      rightJumpTime = -1;
     }
   }
 
@@ -49,12 +51,6 @@ public class Player : MonoBehaviour {
         movement.velocity.x = -Oscillate(rightJumpTime + 0.1f, 0.2f) * 1000f / 3f;
       }
       return;
-    }
-
-    if (left) {
-      movement.velocity.x = -40;
-    } else if (right) {
-      movement.velocity.x = 40;
     }
 
     var wallIsOnLeft = transform.position.x < 0;
