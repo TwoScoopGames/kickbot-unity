@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114412348067484670}
   - component: {fileID: 61194806195645810}
   - component: {fileID: 114366188826486976}
+  - component: {fileID: 114679289556829632}
   m_Layer: 0
   m_Name: Spikes Right
   m_TagString: Hazard
@@ -91,6 +92,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 200, z: 0}
+--- !u!114 &114679289556829632
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1679273543611208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97097d67515f44be7a836175c51fc109, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClips:
+  - {fileID: 8300000, guid: c639137d0861f487db65cede990c9cc4, type: 3}
 --- !u!212 &212453531976905264
 SpriteRenderer:
   m_ObjectHideFlags: 1

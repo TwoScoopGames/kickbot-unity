@@ -76,6 +76,8 @@ public class Player : MonoBehaviour {
     } else if (other.gameObject.tag == "Hazard") {
       isDead = true;
       animator.SetTrigger("Explode");
+      var clips = other.gameObject.GetComponent<DeathAudioClip>();
+      SoundManager.instance.Play(clips.audioClips);
     }
   }
 
