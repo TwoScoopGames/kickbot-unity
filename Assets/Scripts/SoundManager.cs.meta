@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/startMusic.cs.meta
 guid: a132d3a4d46ca435480d7f883c57d16e
 timeCreated: 1497205469
+=======
+guid: bee5a13c255e34727af12f81698ae438
+timeCreated: 1497208980
+>>>>>>> add new particles and sound manager:Assets/Scripts/SoundManager.cs.meta
 licenseType: Free
 MonoImporter:
   serializedVersion: 2

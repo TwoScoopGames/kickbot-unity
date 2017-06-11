@@ -14,6 +14,8 @@ public class Player : MonoBehaviour {
   private float leftJumpTime = -1;
   private float rightJumpTime = -1;
 
+  public AudioClip[] jumpSounds;
+
   // Use this for initialization
   void Start () {
     animator = GetComponent<Animator>();
@@ -93,8 +95,11 @@ public class Player : MonoBehaviour {
       GameManager.instance.StartGame();
       movement.velocity.y = 500;
       onWall = false;
-      // jump sound
+
+      SoundManager.instance.Play(jumpSounds);
+
       animator.SetTrigger("Jump");
+
     }
     if (left) {
       if (wallIsOnLeft) {
