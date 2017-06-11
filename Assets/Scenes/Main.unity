@@ -633,7 +633,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1026296178
+  randomSeed: 1144277518
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4602,6 +4602,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 25c7ad2fb3cbc4714bf1cff397ad3a86, type: 3}
   pointSounds:
   - {fileID: 8300000, guid: c1aec3e53ae2442a88f68f8a6f52ed85, type: 3}
+  fallingSounds:
+  - {fileID: 8300000, guid: c639137d0861f487db65cede990c9cc4, type: 3}
 --- !u!114 &2144247586
 MonoBehaviour:
   m_ObjectHideFlags: 0

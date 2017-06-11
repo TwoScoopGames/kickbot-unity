@@ -20,6 +20,7 @@ public class Player : MonoBehaviour {
 
   public AudioClip[] jumpSounds;
   public AudioClip[] pointSounds;
+  public AudioClip[] fallingSounds;
 
   // Use this for initialization
   void Start () {
@@ -83,6 +84,9 @@ public class Player : MonoBehaviour {
 
   void OnTriggerExit2D(Collider2D other) {
     if (other.gameObject.tag == "MainCamera") {
+      if (!isDead) {
+        SoundManager.instance.Play(fallingSounds);
+      }
       isDead = true;
       GameManager.instance.PlayerDied();
     }
