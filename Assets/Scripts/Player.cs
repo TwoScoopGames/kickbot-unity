@@ -9,7 +9,7 @@ public class Player : MonoBehaviour {
   private Movement2D movement;
   private SpriteRenderer renderer;
 
-  private bool onWall = true;
+  private bool onWall = false;
   private float leftJumpTime = -1;
   private float rightJumpTime = -1;
 
