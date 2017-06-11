@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
+  private Animator animator;
   private Collider2D collider;
   private Movement2D movement;
   private SpriteRenderer renderer;
@@ -14,6 +15,7 @@ public class Player : MonoBehaviour {
 
   // Use this for initialization
   void Start () {
+    animator = GetComponent<Animator>();
     collider = GetComponent<Collider2D>();
     movement = GetComponent<Movement2D>();
     renderer = GetComponent<SpriteRenderer>();
@@ -33,6 +35,8 @@ public class Player : MonoBehaviour {
       onWall = true;
       leftJumpTime = -1;
       rightJumpTime = -1;
+
+      animator.SetTrigger("Land");
 
       var wallIsOnLeft = transform.position.x < 0;
       if (wallIsOnLeft) {
@@ -85,6 +89,7 @@ public class Player : MonoBehaviour {
       movement.velocity.y = 500;
       onWall = false;
       // jump sound
+      animator.SetTrigger("Jump");
     } else if (right) {
       if (wallIsOnLeft) {
         movement.velocity.x = 333.333f;
@@ -95,6 +100,7 @@ public class Player : MonoBehaviour {
       movement.velocity.y = 500;
       onWall = false;
       // jump sound
+      animator.SetTrigger("Jump");
     }
   }
 }
