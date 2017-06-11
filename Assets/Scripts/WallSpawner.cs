@@ -20,9 +20,14 @@ public class WallSpawner : VerticalSpawner {
 
   protected override GameObject[] OnSpawn(GameObject instance) {
     var prefab = hazards[Random.Range(0, hazards.Length)];
+    var prefabRenderer = prefab.GetComponent<SpriteRenderer>();
+
+    var instanceRenderer = instance.GetComponent<SpriteRenderer>();
     var position = instance.transform.position;
+    var sign = position.x > 0 ? -1 : 1;
+    position.x += sign * ((instanceRenderer.bounds.size.x / 2) + (prefabRenderer.bounds.size.x / 2));
+
     GameObject hazard = Instantiate(prefab, position, Quaternion.identity);
-    Debug.Log(hazard.tag);
     return new [] { hazard };
   }
 }
