@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour {
   public static GameManager instance;
 
   private bool waitingToStart = true;
+  private ParticleSystem particlesDust;
 
   // Use this for initialization
   void Awake () {
@@ -39,6 +40,12 @@ public class GameManager : MonoBehaviour {
     var wallRightSpawner = GameObject.Find("Wall Right Spawner");
     spawner = wallRightSpawner.GetComponent<WallSpawner>();
     spawner.ChangeDirection();
+
+    particlesDust = GameObject.Find("particles-dust").GetComponent<ParticleSystem>();
+
+    var dustTransform = particlesDust.transform;
+    dustTransform.eulerAngles = new Vector3 (-dustTransform.eulerAngles.x, 0, 0);
+
   }
 
   // Update is called once per frame

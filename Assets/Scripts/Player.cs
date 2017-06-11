@@ -30,8 +30,6 @@ public class Player : MonoBehaviour {
   void OnTriggerEnter2D(Collider2D other) {
     if (onWall) {
       particlesDust.Play();
-  
-      particlesDust.velocityOverLifetime.yMultiplier.Equals(-1);
       return;
     }
     if (other.gameObject.tag == "Wall" || other.gameObject.tag == "Window") {
