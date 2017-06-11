@@ -3801,8 +3801,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frames:
-  - {fileID: 21300002, guid: bdefc81e524ad49ba9259546433e1a5f, type: 3}
-  - {fileID: 21300000, guid: bdefc81e524ad49ba9259546433e1a5f, type: 3}
+  - {fileID: 21300002, guid: f9e4c2b148204498cada6f978e8c74cc, type: 3}
+  - {fileID: 21300000, guid: f9e4c2b148204498cada6f978e8c74cc, type: 3}
   frameRate: 2
 --- !u!1 &1262789292
 GameObject:
@@ -4187,8 +4187,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frames:
-  - {fileID: 21300000, guid: bdefc81e524ad49ba9259546433e1a5f, type: 3}
-  - {fileID: 21300002, guid: bdefc81e524ad49ba9259546433e1a5f, type: 3}
+  - {fileID: 21300000, guid: f9e4c2b148204498cada6f978e8c74cc, type: 3}
+  - {fileID: 21300002, guid: f9e4c2b148204498cada6f978e8c74cc, type: 3}
   frameRate: 2
 --- !u!1 &2144247580
 GameObject:
