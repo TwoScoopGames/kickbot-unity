@@ -7433,6 +7433,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 21109da8050cc4e05942334d453dcfe7, type: 3}
   - {fileID: 8300000, guid: 9b5efda0471f8403a935c425e59f5d6c, type: 3}
   - {fileID: 8300000, guid: 25c7ad2fb3cbc4714bf1cff397ad3a86, type: 3}
+  pointSounds: []
 --- !u!95 &1431517372
 Animator:
   serializedVersion: 3
@@ -7879,6 +7880,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 21109da8050cc4e05942334d453dcfe7, type: 3}
   - {fileID: 8300000, guid: 9b5efda0471f8403a935c425e59f5d6c, type: 3}
   - {fileID: 8300000, guid: 25c7ad2fb3cbc4714bf1cff397ad3a86, type: 3}
+  pointSounds:
+  - {fileID: 8300000, guid: c1aec3e53ae2442a88f68f8a6f52ed85, type: 3}
 --- !u!114 &2144247586
 MonoBehaviour:
   m_ObjectHideFlags: 0

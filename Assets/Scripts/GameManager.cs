@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour {
     }
     waitingToStart = false;
 
-    StartMusic.instance.Play ();
+    StartMusic.instance.Play();
 
     var title = GameObject.Find("Title UI");
     title.SetActive(false);

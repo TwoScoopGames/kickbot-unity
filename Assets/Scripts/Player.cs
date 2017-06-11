@@ -19,6 +19,7 @@ public class Player : MonoBehaviour {
   private float rightJumpTime = -1;
 
   public AudioClip[] jumpSounds;
+  public AudioClip[] pointSounds;
 
   // Use this for initialization
   void Start () {
@@ -37,6 +38,7 @@ public class Player : MonoBehaviour {
   public void AddPoint() {
     points++;
     scoreText.text = points.ToString();
+    SoundManager.instance.Play(pointSounds);
   }
 
   void OnTriggerEnter2D(Collider2D other) {

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
 public class SoundManager : MonoBehaviour {
@@ -16,7 +14,7 @@ public class SoundManager : MonoBehaviour {
     DontDestroyOnLoad(gameObject);
   }
 
-  public void Play ( AudioClip[] sounds) {
+  public void Play (AudioClip[] sounds) {
     int random = Random.Range(0,sounds.Length);
     AudioSource.PlayClipAtPoint(sounds[random], new Vector3(0, 0, 0));
 	}
