@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour { 
 
   public static GameManager instance;
   public float gameOverScreenTime = 2f;
@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour {
       return;
     }
     waitingToStart = false;
+
+    StartMusic.instance.Play ();
 
     var title = GameObject.Find("Title UI");
     title.SetActive(false);
