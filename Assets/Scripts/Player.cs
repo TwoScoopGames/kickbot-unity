@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Player : MonoBehaviour {
 
@@ -10,7 +8,8 @@ public class Player : MonoBehaviour {
   private SpriteRenderer renderer;
   private ParticleSystem particlesDust;
 
-  private bool onWall = false;
+  private bool onWall;
+  private bool isDead;
   private float leftJumpTime = -1;
   private float rightJumpTime = -1;
 
@@ -61,21 +60,21 @@ public class Player : MonoBehaviour {
 
         renderer.flipX = true;
       }
+    } else if (other.gameObject.tag == "Hazard") {
+      isDead = true;
+      animator.SetTrigger("Explode");
     }
   }
 
   void OnTriggerExit2D(Collider2D other) {
     if (other.gameObject.tag == "MainCamera") {
+      isDead = true;
       GameManager.instance.PlayerDied();
     }
   }
 
   // Update is called once per frame
   void Update () {
-    var axis = Input.GetAxisRaw("Horizontal");
-    var left = axis < 0;
-    var right = axis > 0;
-
     if (!onWall) {
       particlesDust.Stop();
       if (leftJumpTime >= 0 && leftJumpTime <= 0.2f) {
@@ -88,6 +87,14 @@ public class Player : MonoBehaviour {
       }
       return;
     }
+
+    if (isDead) {
+      return;
+    }
+
+    var axis = Input.GetAxisRaw("Horizontal");
+    var left = axis < 0;
+    var right = axis > 0;
 
     var wallIsOnLeft = transform.position.x < 0;
 
