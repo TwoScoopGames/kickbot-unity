@@ -19,11 +19,17 @@ public class WallSpawner : VerticalSpawner {
   }
 
   protected override GameObject[] OnSpawn(GameObject instance) {
+    var position = instance.transform.position;
+
+    var side = position.x > 0 ? "Right" : "Left";
+    if (GameManager.instance.GetHazard() != side) {
+      return new GameObject[0];
+    }
+
     var prefab = hazards[Random.Range(0, hazards.Length)];
     var prefabRenderer = prefab.GetComponent<SpriteRenderer>();
 
     var instanceRenderer = instance.GetComponent<SpriteRenderer>();
-    var position = instance.transform.position;
     var sign = position.x > 0 ? -1 : 1;
     position.x += sign * ((instanceRenderer.bounds.size.x / 2) + (prefabRenderer.bounds.size.x / 2));
 

@@ -63,8 +63,27 @@ public class GameManager : MonoBehaviour {
     waitingToStart = true;
   }
 
+  private bool didIncrement;
+  private int hazardCounter;
+  private string side;
+
+  public string GetHazard() {
+    if (didIncrement) {
+      return side;
+    }
+    didIncrement = true;
+    if (hazardCounter == 0) {
+      side = null;
+    } else {
+      side = Random.Range(0f, 1f) > 0.5f ? "Left" : "Right";
+    }
+    Debug.Log(side);
+    hazardCounter = (hazardCounter + 1) % 3;
+    return side;
+  }
+
   // Update is called once per frame
   void Update () {
-    
+    didIncrement = false;
   }
 }
