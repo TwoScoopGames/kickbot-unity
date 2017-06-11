@@ -8,6 +8,7 @@ public class Player : MonoBehaviour {
   private Collider2D collider;
   private Movement2D movement;
   private SpriteRenderer renderer;
+  private ParticleSystem particlesDust;
 
   private bool onWall = false;
   private float leftJumpTime = -1;
@@ -19,6 +20,7 @@ public class Player : MonoBehaviour {
     collider = GetComponent<Collider2D>();
     movement = GetComponent<Movement2D>();
     renderer = GetComponent<SpriteRenderer>();
+    particlesDust = GameObject.Find("particles-dust").GetComponent<ParticleSystem>();
   }
 
   private float Oscillate(float current, float period) {
@@ -27,6 +29,9 @@ public class Player : MonoBehaviour {
 
   void OnTriggerEnter2D(Collider2D other) {
     if (onWall) {
+      particlesDust.Play();
+  
+      particlesDust.velocityOverLifetime.yMultiplier.Equals(-1);
       return;
     }
     if (other.gameObject.tag == "Wall" || other.gameObject.tag == "Window") {
@@ -66,6 +71,7 @@ public class Player : MonoBehaviour {
     var right = axis > 0;
 
     if (!onWall) {
+      particlesDust.Stop();
       if (leftJumpTime >= 0 && leftJumpTime <= 0.2f) {
         leftJumpTime += Time.deltaTime;
         movement.velocity.x = Oscillate(leftJumpTime + 0.1f, 0.2f) * 1000f / 3f;
