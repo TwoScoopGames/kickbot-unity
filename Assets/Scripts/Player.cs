@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
+
+  public GameObject score;
+  private Text scoreText;
 
   private Animator animator;
   private Collider2D collider;
@@ -8,6 +12,7 @@ public class Player : MonoBehaviour {
   private SpriteRenderer renderer;
   private ParticleSystem particlesDust;
 
+  private int points;
   private bool onWall;
   private bool isDead;
   private float leftJumpTime = -1;
@@ -17,6 +22,7 @@ public class Player : MonoBehaviour {
 
   // Use this for initialization
   void Start () {
+    scoreText = score.GetComponent<Text>();
     animator = GetComponent<Animator>();
     collider = GetComponent<Collider2D>();
     movement = GetComponent<Movement2D>();
@@ -26,6 +32,11 @@ public class Player : MonoBehaviour {
 
   private float Oscillate(float current, float period) {
     return Mathf.Sin(current / period * Mathf.PI);
+  }
+
+  public void AddPoint() {
+    points++;
+    scoreText.text = points.ToString();
   }
 
   void OnTriggerEnter2D(Collider2D other) {
