@@ -62,6 +62,12 @@ public class Player : MonoBehaviour {
     }
   }
 
+  void OnTriggerExit2D(Collider2D other) {
+    if (other.gameObject.tag == "MainCamera") {
+      GameManager.instance.PlayerDied();
+    }
+  }
+
   // Update is called once per frame
   void Update () {
     var axis = Input.GetAxisRaw("Horizontal");

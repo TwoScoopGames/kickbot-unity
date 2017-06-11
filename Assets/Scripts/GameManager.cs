@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
   public static GameManager instance;
+  public float gameOverScreenTime = 2f;
 
   private bool waitingToStart = true;
   private ParticleSystem particlesDust;
@@ -49,6 +50,15 @@ public class GameManager : MonoBehaviour {
     var dustTransform = particlesDust.transform;
     dustTransform.eulerAngles = new Vector3 (-dustTransform.eulerAngles.x, 0, 0);
 
+  }
+
+  public void PlayerDied() {
+    Invoke("Restart", gameOverScreenTime);
+  }
+
+  public void Restart() {
+    Application.LoadLevel(Application.loadedLevel);
+    waitingToStart = true;
   }
 
   // Update is called once per frame
