@@ -16,4 +16,8 @@ public class BackgroundSpawner : VerticalSpawner {
   protected override GameObject Next(string lastTag) {
     return prefabs[Random.Range(0, prefabs.Length)];
   }
+
+  protected override GameObject[] OnSpawn(GameObject instance) {
+    return new GameObject[0];
+  }
 }

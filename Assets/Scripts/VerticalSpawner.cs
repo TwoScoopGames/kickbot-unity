@@ -80,6 +80,7 @@ public abstract class VerticalSpawner : MonoBehaviour {
       var prefab = Next(topItemTag);
       GameObject instance = Instantiate(prefab, new Vector3(transform.position.x, y, 0f), Quaternion.identity);
       topItemTag = instance.tag;
+      items.AddRange(OnSpawn(instance));
       items.Add(instance);
     }
 
@@ -93,6 +94,7 @@ public abstract class VerticalSpawner : MonoBehaviour {
   }
 
   protected abstract GameObject Next(string lastTag);
+  protected abstract GameObject[] OnSpawn(GameObject instance);
 
   private void SetVelocities() {
     foreach (var item in items) {

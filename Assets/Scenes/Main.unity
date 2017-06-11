@@ -3730,6 +3730,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 200, z: 0}
+  hazards:
+  - {fileID: 1253819949147842, guid: ecdb34a0377104662be9f9aea7e98d2a, type: 2}
+  - {fileID: 1679273543611208, guid: 4d8e25425d58b496abe95df83426d086, type: 2}
   walls:
   - {fileID: 1768855058051472, guid: 2bb901a52c8b24d08a7314f2b4201221, type: 2}
   - {fileID: 1650532711987086, guid: c89b04fe63fcc4d8fba6049b32c03c1f, type: 2}
@@ -4170,6 +4173,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 200, z: 0}
+  hazards:
+  - {fileID: 1283414721546904, guid: 7a00e45c8e135420ea1b1150d73c7fe0, type: 2}
+  - {fileID: 1311242376568516, guid: 2832998463ddb467ea3fd270ab7a5623, type: 2}
   walls:
   - {fileID: 1893300499523376, guid: 4870d3e58cc3f4da98cbc94343189102, type: 2}
   - {fileID: 1062616001916332, guid: d3851c85cf845495fae0c92a319c8941, type: 2}
