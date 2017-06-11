@@ -100,7 +100,8 @@ public class Player : MonoBehaviour {
 
     if (left || right) {
       GameManager.instance.StartGame();
-      movement.velocity.y = 500;
+      // FIXME: should be 500f, because of math, but it's too fast, so number is fudged for now
+      movement.velocity.y = 333.333f;
       onWall = false;
 
       SoundManager.instance.Play(jumpSounds);
