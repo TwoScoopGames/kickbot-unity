@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour {
     acceleration.enabled = true;
 
     var backgroundSpawner = GameObject.Find("Background Spawner");
-    VerticalSpawner spawner = backgroundSpawner.GetComponent<Spawner>();
+    VerticalSpawner spawner = backgroundSpawner.GetComponent<BackgroundSpawner>();
     spawner.ChangeDirection();
 
     var wallLeftSpawner = GameObject.Find("Wall Left Spawner");

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Spawner : VerticalSpawner {
+public class BackgroundSpawner : VerticalSpawner {
 
   public GameObject[] prefabs;
 
