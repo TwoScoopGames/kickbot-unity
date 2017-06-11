@@ -79,6 +79,13 @@ public class Player : MonoBehaviour {
 
     var wallIsOnLeft = transform.position.x < 0;
 
+    if (left || right) {
+      GameManager.instance.StartGame();
+      movement.velocity.y = 500;
+      onWall = false;
+      // jump sound
+      animator.SetTrigger("Jump");
+    }
     if (left) {
       if (wallIsOnLeft) {
         // sin wave bullshit
@@ -86,10 +93,6 @@ public class Player : MonoBehaviour {
       } else {
         movement.velocity.x = -333.333f;
       }
-      movement.velocity.y = 500;
-      onWall = false;
-      // jump sound
-      animator.SetTrigger("Jump");
     } else if (right) {
       if (wallIsOnLeft) {
         movement.velocity.x = 333.333f;
@@ -97,10 +100,6 @@ public class Player : MonoBehaviour {
         // sine wave bullshit
         rightJumpTime = 0;
       }
-      movement.velocity.y = 500;
-      onWall = false;
-      // jump sound
-      animator.SetTrigger("Jump");
     }
   }
 }
