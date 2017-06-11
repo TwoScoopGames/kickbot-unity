@@ -25,6 +25,9 @@ public class GameManager : MonoBehaviour {
     }
     waitingToStart = false;
 
+    var title = GameObject.Find("Title UI");
+    title.SetActive(false);
+
     var player = GameObject.Find("Player");
     var acceleration = player.GetComponent<Acceleration2D>();
     acceleration.enabled = true;
