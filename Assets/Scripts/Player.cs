@@ -21,6 +21,25 @@ public class Player : MonoBehaviour {
   public AudioClip[] jumpSounds;
   public AudioClip[] pointSounds;
 
+
+  public bool touchButtonLeft;
+
+  public void TouchButtonLeftPressed() {
+      touchButtonLeft = true;
+  }
+  public void TouchButtonLeftUp() {
+    touchButtonLeft = false;
+  }
+
+  public bool touchButtonRight;
+
+  public void TouchButtonRightPressed() {
+    touchButtonRight = true;
+  }
+  public void TouchButtonRightUp() {
+    touchButtonRight = false;
+  }
+
   // Use this for initialization
   void Start () {
     scoreText = score.GetComponent<Text>();
@@ -38,7 +57,7 @@ public class Player : MonoBehaviour {
   public void AddPoint() {
     points++;
     scoreText.text = points.ToString();
-    SoundManager.instance.Play(pointSounds);
+    //SoundManager.instance.Play(pointSounds);
   }
 
   void OnTriggerEnter2D(Collider2D other) {
@@ -113,7 +132,14 @@ public class Player : MonoBehaviour {
 
     var wallIsOnLeft = transform.position.x < 0;
 
-    if (left || right) {
+    if ( left
+      || touchButtonLeft
+      || right
+      || touchButtonRight
+      ) {
+
+
+
       GameManager.instance.StartGame();
       // FIXME: should be 500f, because of math, but it's too fast, so number is fudged for now
       movement.velocity.y = 333.333f;
@@ -124,14 +150,14 @@ public class Player : MonoBehaviour {
       animator.SetTrigger("Jump");
 
     }
-    if (left) {
+    if (left || touchButtonLeft) {
       if (wallIsOnLeft) {
         // sin wave bullshit
         leftJumpTime = 0;
       } else {
         movement.velocity.x = -333.333f;
       }
-    } else if (right) {
+    } else if (right || touchButtonRight) {
       if (wallIsOnLeft) {
         movement.velocity.x = 333.333f;
       } else {
