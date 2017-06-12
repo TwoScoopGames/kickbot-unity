@@ -11,6 +11,7 @@ public class Player : MonoBehaviour {
   private Movement2D movement;
   private SpriteRenderer renderer;
   private ParticleSystem particlesDust;
+  private ParticleSystem particlesDeath;
 
   private int points;
   private bool onWall;
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour {
 
   public AudioClip[] jumpSounds;
   public AudioClip[] pointSounds;
+  public AudioClip[] fallingSounds;
 
 
   public bool touchButtonLeft;
@@ -48,6 +50,7 @@ public class Player : MonoBehaviour {
     movement = GetComponent<Movement2D>();
     renderer = GetComponent<SpriteRenderer>();
     particlesDust = GameObject.Find("particles-dust").GetComponent<ParticleSystem>();
+    particlesDeath = GameObject.Find("particles-death").GetComponent<ParticleSystem>();
   }
 
   private float Oscillate(float current, float period) {
@@ -97,11 +100,15 @@ public class Player : MonoBehaviour {
       animator.SetTrigger("Explode");
       var clips = other.gameObject.GetComponent<DeathAudioClip>();
       SoundManager.instance.Play(clips.audioClips);
+      particlesDeath.Play();
     }
   }
 
   void OnTriggerExit2D(Collider2D other) {
     if (other.gameObject.tag == "MainCamera") {
+      if (!isDead) {
+        SoundManager.instance.Play(fallingSounds);
+      }
       isDead = true;
       GameManager.instance.PlayerDied();
     }
