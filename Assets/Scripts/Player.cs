@@ -12,6 +12,7 @@ public class Player : MonoBehaviour {
   private SpriteRenderer renderer;
   private ParticleSystem particlesDust;
   private ParticleSystem particlesDeath;
+  private ParticleSystem particlesDeathSmoke;
 
   private int points;
   private bool onWall;
@@ -27,7 +28,7 @@ public class Player : MonoBehaviour {
   public bool touchButtonLeft;
 
   public void TouchButtonLeftPressed() {
-      touchButtonLeft = true;
+    touchButtonLeft = true;
   }
   public void TouchButtonLeftUp() {
     touchButtonLeft = false;
@@ -51,6 +52,7 @@ public class Player : MonoBehaviour {
     renderer = GetComponent<SpriteRenderer>();
     particlesDust = GameObject.Find("particles-dust").GetComponent<ParticleSystem>();
     particlesDeath = GameObject.Find("particles-death").GetComponent<ParticleSystem>();
+    particlesDeathSmoke = GameObject.Find("particles-deathsmoke").GetComponent<ParticleSystem>();
   }
 
   private float Oscillate(float current, float period) {
@@ -101,6 +103,7 @@ public class Player : MonoBehaviour {
       var clips = other.gameObject.GetComponent<DeathAudioClip>();
       SoundManager.instance.Play(clips.audioClips);
       particlesDeath.Play();
+      particlesDeathSmoke.Play();
     }
   }
 
