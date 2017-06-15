@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour { 
 
   public static GameManager instance;
-  public float gameOverScreenTime = 2f;
+  public float gameOverScreenTime = 1f;
 
   private bool waitingToStart = true;
   private ParticleSystem particlesDust;
