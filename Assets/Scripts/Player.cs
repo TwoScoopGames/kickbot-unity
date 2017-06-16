@@ -9,10 +9,10 @@ public class Player : MonoBehaviour {
   private Animator animator;
   private Collider2D collider;
   private Movement2D movement;
-  private SpriteRenderer renderer;
   private ParticleSystem particlesDust;
   private ParticleSystem particlesDeath;
   private ParticleSystem particlesDeathSmoke;
+  private SpriteRenderer renderer;
 
   private int points;
   private bool onWall;
@@ -45,14 +45,14 @@ public class Player : MonoBehaviour {
 
   // Use this for initialization
   void Start () {
-    scoreText = score.GetComponent<Text>();
     animator = GetComponent<Animator>();
     collider = GetComponent<Collider2D>();
     movement = GetComponent<Movement2D>();
-    renderer = GetComponent<SpriteRenderer>();
     particlesDust = GameObject.Find("particles-dust").GetComponent<ParticleSystem>();
     particlesDeath = GameObject.Find("particles-death").GetComponent<ParticleSystem>();
     particlesDeathSmoke = GameObject.Find("particles-deathsmoke").GetComponent<ParticleSystem>();
+    renderer = GetComponent<SpriteRenderer>();
+    scoreText = score.GetComponent<Text>();
   }
 
   private float Oscillate(float current, float period) {
