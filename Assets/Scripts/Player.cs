@@ -13,6 +13,7 @@ public class Player : MonoBehaviour {
   private ParticleSystem particlesDust;
   private ParticleSystem particlesDeath;
   private ParticleSystem particlesDeathSmoke;
+  private ParticleSystem particlesKick;
   private SpriteRenderer renderer;
 
   private int points;
@@ -53,6 +54,7 @@ public class Player : MonoBehaviour {
     particlesDust = GameObject.Find("particles-dust").GetComponent<ParticleSystem>();
     particlesDeath = GameObject.Find("particles-death").GetComponent<ParticleSystem>();
     particlesDeathSmoke = GameObject.Find("particles-deathsmoke").GetComponent<ParticleSystem>();
+    particlesKick = GameObject.Find("particles-kick").GetComponent<ParticleSystem>();
     renderer = GetComponent<SpriteRenderer>();
     scoreText = score.GetComponent<Text>();
   }
@@ -80,6 +82,7 @@ public class Player : MonoBehaviour {
       rightJumpTime = -1;
 
       animator.SetTrigger("Land");
+      particlesKick.Play();
 
       var wallIsOnLeft = transform.position.x < 0;
       if (wallIsOnLeft) {
