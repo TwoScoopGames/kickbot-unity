@@ -7,6 +7,12 @@ public class ConsumeAxis : MonoBehaviour {
   private float axisValue;
   private bool axisWasRead;
 
+  // Use this for initialization
+  void Start () {
+    axisValue = 0;
+    axisWasRead = false;
+  }
+
   // Update is called once per frame
   void Update() {
     var axis = Input.GetAxisRaw(axisName);
