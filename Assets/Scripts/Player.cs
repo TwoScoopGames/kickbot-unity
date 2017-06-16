@@ -137,19 +137,12 @@ public class Player : MonoBehaviour {
     }
 
     var axis = Input.GetAxisRaw("Horizontal");
-    var left = axis < 0;
-    var right = axis > 0;
+    var left = axis < 0 || touchButtonLeft;
+    var right = axis > 0 || touchButtonRight;
 
     var wallIsOnLeft = transform.position.x < 0;
 
-    if ( left
-      || touchButtonLeft
-      || right
-      || touchButtonRight
-      ) {
-
-
-
+    if (left || right) {
       GameManager.instance.StartGame();
       // FIXME: should be 500f, because of math, but it's too fast, so number is fudged for now
       movement.velocity.y = 333.333f;
@@ -158,16 +151,15 @@ public class Player : MonoBehaviour {
       SoundManager.instance.Play(jumpSounds);
 
       animator.SetTrigger("Jump");
-
     }
-    if (left || touchButtonLeft) {
+    if (left) {
       if (wallIsOnLeft) {
         // sin wave bullshit
         leftJumpTime = 0;
       } else {
         movement.velocity.x = -333.333f;
       }
-    } else if (right || touchButtonRight) {
+    } else if (right) {
       if (wallIsOnLeft) {
         movement.velocity.x = 333.333f;
       } else {
