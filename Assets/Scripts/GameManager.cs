@@ -52,7 +52,13 @@ public class GameManager : MonoBehaviour {
 
   }
 
-  public void PlayerDied() {
+  public void PlayerDied(int score) {
+    var highScore = PlayerPrefs.GetInt("High Score");
+    if (score > highScore) {
+      PlayerPrefs.SetInt("High Score", score);
+      Debug.Log(string.Format("New high score: {0}", score));
+    }
+
     Invoke("Restart", gameOverScreenTime);
   }
 

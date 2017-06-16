@@ -115,7 +115,7 @@ public class Player : MonoBehaviour {
         SoundManager.instance.Play(fallingSounds);
       }
       isDead = true;
-      GameManager.instance.PlayerDied();
+      GameManager.instance.PlayerDied(points);
     }
   }
 
