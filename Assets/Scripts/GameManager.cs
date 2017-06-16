@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameManager : MonoBehaviour { 
 
@@ -59,7 +57,7 @@ public class GameManager : MonoBehaviour {
   }
 
   public void Restart() {
-    Application.LoadLevel(Application.loadedLevel);
+    UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
     waitingToStart = true;
   }
 
