@@ -131,6 +131,7 @@ public class Player : MonoBehaviour {
         rightJumpTime += Time.deltaTime;
         movement.velocity.x = -Oscillate(rightJumpTime + 0.1f, 0.2f) * 1000f / 3f;
       }
+      renderer.flipX = movement.velocity.x < 0;
       return;
     }
 
