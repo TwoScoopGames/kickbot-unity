@@ -8,6 +8,7 @@ public class Player : MonoBehaviour {
 
   private Animator animator;
   private Collider2D collider;
+  private ConsumeAxis horizontalAxis;
   private Movement2D movement;
   private ParticleSystem particlesDust;
   private ParticleSystem particlesDeath;
@@ -47,6 +48,7 @@ public class Player : MonoBehaviour {
   void Start () {
     animator = GetComponent<Animator>();
     collider = GetComponent<Collider2D>();
+    horizontalAxis = GetComponent<ConsumeAxis>();
     movement = GetComponent<Movement2D>();
     particlesDust = GameObject.Find("particles-dust").GetComponent<ParticleSystem>();
     particlesDeath = GameObject.Find("particles-death").GetComponent<ParticleSystem>();
@@ -136,7 +138,7 @@ public class Player : MonoBehaviour {
       return;
     }
 
-    var axis = Input.GetAxisRaw("Horizontal");
+    var axis = horizontalAxis.GetAxisRaw();
     var left = axis < 0 || touchButtonLeft;
     var right = axis > 0 || touchButtonRight;
 
