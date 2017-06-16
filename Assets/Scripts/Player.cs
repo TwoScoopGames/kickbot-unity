@@ -158,6 +158,7 @@ public class Player : MonoBehaviour {
       if (wallIsOnLeft) {
         // sin wave bullshit
         leftJumpTime = 0;
+        movement.velocity.x = Oscillate(leftJumpTime + 0.1f, 0.2f) * 1000f / 3f;
       } else {
         movement.velocity.x = -333.333f;
       }
@@ -167,6 +168,7 @@ public class Player : MonoBehaviour {
       } else {
         // sine wave bullshit
         rightJumpTime = 0;
+        movement.velocity.x = -Oscillate(rightJumpTime + 0.1f, 0.2f) * 1000f / 3f;
       }
     }
   }
