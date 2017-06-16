@@ -19,8 +19,6 @@ public class PointGenerator : MonoBehaviour {
     var wallTop = transform.position.y + (renderer.bounds.size.y / 2);
     var playerBottom = player.transform.position.y + (playerRenderer.bounds.size.y / 2);
     if (playerBottom > wallTop) {
-      // point sound
-      Debug.Log("point");
       enabled = false;
       player.AddPoint();
     }

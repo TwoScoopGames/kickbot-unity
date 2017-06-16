@@ -64,7 +64,7 @@ public class Player : MonoBehaviour {
   public void AddPoint() {
     points++;
     scoreText.text = points.ToString();
-    //SoundManager.instance.Play(pointSounds);
+    SoundManager.instance.Play(pointSounds);
   }
 
   void OnTriggerEnter2D(Collider2D other) {
