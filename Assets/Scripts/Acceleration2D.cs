@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Acceleration2D : MonoBehaviour {
 
@@ -14,7 +12,7 @@ public class Acceleration2D : MonoBehaviour {
   }
 
   // Update is called once per frame
-  void Update () {
-    movement.velocity += acceleration * Time.deltaTime;
+  void FixedUpdate () {
+    movement.velocity += acceleration * Time.fixedDeltaTime;
   }
 }
