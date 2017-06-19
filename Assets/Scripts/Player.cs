@@ -15,6 +15,7 @@ public class Player : MonoBehaviour {
   private ParticleSystem particlesDeathSmoke;
   private ParticleSystem particlesKick;
   private SpriteRenderer renderer;
+  private Flash flash;
 
   private int points;
   private bool onWall;
@@ -49,6 +50,7 @@ public class Player : MonoBehaviour {
   void Start () {
     animator = GetComponent<Animator>();
     collider = GetComponent<Collider2D>();
+    flash = GameObject.Find("Flash").GetComponent<Flash>();
     horizontalAxis = GetComponent<ConsumeAxis>();
     movement = GetComponent<Movement2D>();
     particlesDust = GameObject.Find("particles-dust").GetComponent<ParticleSystem>();
@@ -109,6 +111,7 @@ public class Player : MonoBehaviour {
       SoundManager.instance.Play(clips.audioClips);
       particlesDeath.Play();
       particlesDeathSmoke.Play();
+      flash.Begin();
     }
   }
 
