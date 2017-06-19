@@ -5,6 +5,10 @@ public class GameManager : MonoBehaviour {
   public static GameManager instance;
   public float gameOverScreenTime = 1f;
 
+  public GameObject gameOverScreen;
+  public GameObject gameOverOverlay;
+  private Flash gameOverFlash;
+
   private bool waitingToStart = true;
   private ParticleSystem particlesDust;
 
@@ -16,6 +20,10 @@ public class GameManager : MonoBehaviour {
       Destroy(gameObject);
     }
     DontDestroyOnLoad(gameObject);
+
+    particlesDust = GameObject.Find("particles-dust").GetComponent<ParticleSystem>();
+
+    gameOverFlash = gameOverOverlay.GetComponent<Flash>();
   }
 
   public void StartGame() {
@@ -45,8 +53,6 @@ public class GameManager : MonoBehaviour {
     spawner = wallRightSpawner.GetComponent<WallSpawner>();
     spawner.ChangeDirection();
 
-    particlesDust = GameObject.Find("particles-dust").GetComponent<ParticleSystem>();
-
     var dustTransform = particlesDust.transform;
     dustTransform.eulerAngles = new Vector3 (-dustTransform.eulerAngles.x, 0, 0);
 
@@ -58,6 +64,9 @@ public class GameManager : MonoBehaviour {
       PlayerPrefs.SetInt("High Score", score);
       Debug.Log(string.Format("New high score: {0}", score));
     }
+
+    gameOverScreen.SetActive(true);
+    gameOverFlash.Begin();
 
     Invoke("Restart", gameOverScreenTime);
   }

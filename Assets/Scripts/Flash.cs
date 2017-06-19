@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class Flash : MonoBehaviour {
 
   public float flashTime;
+  public float maxAlpha = 1.0f;
 
   private Image image;
   private float currentTime = -1;
@@ -30,7 +31,7 @@ public class Flash : MonoBehaviour {
       color.a = 0f;
       currentTime = -1;
     } else {
-      color.a = Mathf.Sin(currentTime / flashTime * Mathf.PI);
+      color.a = Mathf.Min(maxAlpha, Mathf.Sin(currentTime / flashTime * Mathf.PI));
     }
     image.color = color;
   }
