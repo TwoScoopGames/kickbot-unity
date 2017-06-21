@@ -1,10 +1,6 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
-
-  public GameObject score;
-  private Text scoreText;
 
   private Animator animator;
   private Collider2D collider;
@@ -17,7 +13,6 @@ public class Player : MonoBehaviour {
   private SpriteRenderer renderer;
   private Flash flash;
 
-  private int points;
   private bool onWall;
   private bool isDead;
   private float leftJumpTime = -1;
@@ -58,7 +53,6 @@ public class Player : MonoBehaviour {
     particlesDeathSmoke = GameObject.Find("particles-deathsmoke").GetComponent<ParticleSystem>();
     particlesKick = GameObject.Find("particles-kick").GetComponent<ParticleSystem>();
     renderer = GetComponent<SpriteRenderer>();
-    scoreText = score.GetComponent<Text>();
   }
 
   private float Oscillate(float current, float period) {
@@ -66,8 +60,7 @@ public class Player : MonoBehaviour {
   }
 
   public void AddPoint() {
-    points++;
-    scoreText.text = points.ToString();
+    GameManager.instance.AddPoint();
     SoundManager.instance.Play(pointSounds);
   }
 
@@ -121,7 +114,7 @@ public class Player : MonoBehaviour {
         SoundManager.instance.Play(fallingSounds);
       }
       isDead = true;
-      GameManager.instance.PlayerDied(points);
+      GameManager.instance.PlayerDied();
     }
   }
 
