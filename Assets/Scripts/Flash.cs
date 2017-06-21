@@ -5,6 +5,7 @@ public class Flash : MonoBehaviour {
 
   public float flashTime;
   public float maxAlpha = 1.0f;
+  public bool runOnStart = true;
 
   private Image image;
   private float currentTime = -1;
@@ -12,6 +13,7 @@ public class Flash : MonoBehaviour {
   // Use this for initialization
   void Start () {
     image = GetComponent<Image>();
+    currentTime = runOnStart ? 0 : -1;
   }
 
   public void Begin() {

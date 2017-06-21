@@ -6,11 +6,9 @@ public class GameManager : MonoBehaviour {
   public float gameOverScreenTime = 1f;
 
   public GameObject gameOverScreen;
-  public GameObject gameOverOverlay;
-  private Flash gameOverFlash;
+  private GameObject canvas;
 
   private bool waitingToStart = true;
-  private ParticleSystem particlesDust;
 
   // Use this for initialization
   void Awake () {
@@ -20,10 +18,6 @@ public class GameManager : MonoBehaviour {
       Destroy(gameObject);
     }
     DontDestroyOnLoad(gameObject);
-
-    particlesDust = GameObject.Find("particles-dust").GetComponent<ParticleSystem>();
-
-    gameOverFlash = gameOverOverlay.GetComponent<Flash>();
   }
 
   public void StartGame() {
@@ -33,6 +27,8 @@ public class GameManager : MonoBehaviour {
     waitingToStart = false;
 
     StartMusic.instance.Play();
+
+    canvas = GameObject.Find("Canvas");
 
     var title = GameObject.Find("Title UI");
     title.SetActive(false);
@@ -53,6 +49,7 @@ public class GameManager : MonoBehaviour {
     spawner = wallRightSpawner.GetComponent<WallSpawner>();
     spawner.ChangeDirection();
 
+    var particlesDust = GameObject.Find("particles-dust").GetComponent<ParticleSystem>();
     var dustTransform = particlesDust.transform;
     dustTransform.eulerAngles = new Vector3 (-dustTransform.eulerAngles.x, 0, 0);
 
@@ -65,8 +62,7 @@ public class GameManager : MonoBehaviour {
       Debug.Log(string.Format("New high score: {0}", score));
     }
 
-    gameOverScreen.SetActive(true);
-    gameOverFlash.Begin();
+    Instantiate(gameOverScreen, canvas.transform);
 
     Invoke("Restart", gameOverScreenTime);
   }
