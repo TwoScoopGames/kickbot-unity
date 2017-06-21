@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
 
   private bool waitingToStart = true;
   private int score;
+  private int highScore;
 
   // Use this for initialization
   void Awake () {
@@ -19,6 +20,8 @@ public class GameManager : MonoBehaviour {
       Destroy(gameObject);
     }
     DontDestroyOnLoad(gameObject);
+
+    highScore = PlayerPrefs.GetInt("High Score");
   }
 
   public void StartGame() {
@@ -62,11 +65,14 @@ public class GameManager : MonoBehaviour {
   public int GetScore() {
     return score;
   }
+  public int GetHighScore() {
+    return highScore;
+  }
 
   public void PlayerDied() {
-    var highScore = PlayerPrefs.GetInt("High Score");
     if (score > highScore) {
-      PlayerPrefs.SetInt("High Score", score);
+      highScore = score;
+      PlayerPrefs.SetInt("High Score", highScore);
       Debug.Log(string.Format("New high score: {0}", score));
     }
 

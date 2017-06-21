@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 224975697715009394}
   - component: {fileID: 222975832604151896}
   - component: {fileID: 114075844737826104}
+  - component: {fileID: 114518353077717972}
   m_Layer: 5
   m_Name: Score-Best
   m_TagString: Untagged
@@ -249,6 +250,17 @@ MonoBehaviour:
   flashTime: 0.8
   maxAlpha: 0.7
   runOnStart: 1
+--- !u!114 &114518353077717972
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1362729728323718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0455499470963430a8f5e5118e2a7818, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114903866853205294
 MonoBehaviour:
   m_ObjectHideFlags: 1
