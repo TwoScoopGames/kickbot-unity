@@ -81,6 +81,9 @@ public class GameManager : MonoBehaviour {
       Debug.Log(string.Format("New high score: {0}", score));
     }
 
+    var levelUI = GameObject.Find("Level UI");
+    levelUI.SetActive(false);
+
     Instantiate(gameOverScreen, canvas.transform);
 
     Invoke("Restart", gameOverScreenTime);
