@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 222975832604151896}
   - component: {fileID: 114075844737826104}
   - component: {fileID: 114518353077717972}
+  - component: {fileID: 114606538038928480}
   m_Layer: 5
   m_Name: Score-Best
   m_TagString: Untagged
@@ -39,6 +40,7 @@ GameObject:
   - component: {fileID: 224832315505608974}
   - component: {fileID: 222709245121424694}
   - component: {fileID: 114903866853205294}
+  - component: {fileID: 114477547739883726}
   m_Layer: 5
   m_Name: Header-Best
   m_TagString: Untagged
@@ -250,6 +252,18 @@ MonoBehaviour:
   flashTime: 0.8
   maxAlpha: 0.7
   runOnStart: 1
+--- !u!114 &114477547739883726
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1749557787608786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95f1ccb4ea89f4b9b916f14641cc2b61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 0.99264705, g: 0, b: 0.8831135, a: 1}
 --- !u!114 &114518353077717972
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -261,6 +275,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0455499470963430a8f5e5118e2a7818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114606538038928480
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1362729728323718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95f1ccb4ea89f4b9b916f14641cc2b61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 0.99264705, g: 0, b: 0.8831135, a: 1}
 --- !u!114 &114903866853205294
 MonoBehaviour:
   m_ObjectHideFlags: 1

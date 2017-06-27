@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
   private bool waitingToStart = true;
   private int score;
   private int highScore;
+  private bool newBest;
 
   // Use this for initialization
   void Awake () {
@@ -68,10 +69,14 @@ public class GameManager : MonoBehaviour {
   public int GetHighScore() {
     return highScore;
   }
+  public bool WasNewHighScore() {
+    return newBest;
+  }
 
   public void PlayerDied() {
     if (score > highScore) {
       highScore = score;
+      newBest = true;
       PlayerPrefs.SetInt("High Score", highScore);
       Debug.Log(string.Format("New high score: {0}", score));
     }
@@ -85,6 +90,7 @@ public class GameManager : MonoBehaviour {
     UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
     waitingToStart = true;
     score = 0;
+    newBest = false;
   }
 
   private bool didIncrement;
