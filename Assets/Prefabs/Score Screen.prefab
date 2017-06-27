@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 222709245121424694}
   - component: {fileID: 114903866853205294}
   - component: {fileID: 114477547739883726}
+  - component: {fileID: 114684186018627510}
   m_Layer: 5
   m_Name: Header-Best
   m_TagString: Untagged
@@ -287,6 +288,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: {r: 0.99264705, g: 0, b: 0.8831135, a: 1}
+--- !u!114 &114684186018627510
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1749557787608786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f24e7388f2dd4467e9cdbdafec72cac3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: NEW BEST!
 --- !u!114 &114903866853205294
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class SetTextColorForNewHighScore : MonoBehaviour {
+public class SetTextForNewHighScore : MonoBehaviour {
 
-  public Color color;
+  public string message;
 
   private Text text;
 
@@ -15,7 +15,7 @@ public class SetTextColorForNewHighScore : MonoBehaviour {
   // Update is called once per frame
   void Update () {
     if (GameManager.instance.WasNewHighScore()) {
-      text.color = color;
+      text.text = message;
     }
   }
 }
