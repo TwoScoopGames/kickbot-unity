@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 5b51dea49e6404af2a2f06190ef65558
-timeCreated: 1497064218
+guid: 2eae4c4965dfb46b6b8e562c0f5dd56b
+timeCreated: 1499218698
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
@@ -27,7 +27,7 @@ TextureImporter:
   textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: 0
+    filterMode: -1
     aniso: -1
     mipBias: -1
     wrapMode: 1
@@ -40,7 +40,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 1
+  spritePixelsToUnits: 2
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -82,23 +82,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-  - buildTarget: Tizen
-    maxTextureSize: 2048
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
   - buildTarget: WebGL
-    maxTextureSize: 2048
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-  - buildTarget: Samsung TV
     maxTextureSize: 2048
     textureFormat: -1
     textureCompression: 1
