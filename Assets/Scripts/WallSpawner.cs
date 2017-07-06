@@ -31,7 +31,7 @@ public class WallSpawner : VerticalSpawner {
 
     var instanceRenderer = instance.GetComponent<SpriteRenderer>();
     var sign = position.x > 0 ? -1 : 1;
-    position.x += sign * ((instanceRenderer.bounds.size.x / 2) + (prefabRenderer.bounds.size.x / 2));
+    position.x += sign * ((instanceRenderer.bounds.size.x / 2) + (prefabRenderer.bounds.size.x / 2)) - (2 * sign);
 
     GameObject hazard = Instantiate(prefab, position, Quaternion.identity);
     return new [] { hazard };
