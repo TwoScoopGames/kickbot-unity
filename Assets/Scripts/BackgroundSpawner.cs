@@ -1,7 +1,5 @@
 ﻿using Random = UnityEngine.Random;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class BackgroundSpawner : VerticalSpawner {
@@ -13,11 +11,11 @@ public class BackgroundSpawner : VerticalSpawner {
     return renderer.sprite.bounds.size.y;
   }
 
-  protected override GameObject Next(string lastTag) {
-    return prefabs[Random.Range(0, prefabs.Length)];
-  }
-
-  protected override GameObject[] OnSpawn(GameObject instance) {
-    return new GameObject[0];
+  protected override IList<GameObject> OnSpawn(string lastTag, Vector3 position) {
+    var prefab = prefabs[Random.Range(0, prefabs.Length)];
+    var instance = Instantiate(prefab, position, Quaternion.identity);
+    var items = new List<GameObject>();
+    items.Add(instance);
+    return items;
   }
 }

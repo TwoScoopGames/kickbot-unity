@@ -104,6 +104,9 @@ public class GameManager : MonoBehaviour {
   private string side;
 
   public string GetHazard() {
+    if (waitingToStart) {
+      return null;
+    }
     if (didIncrement) {
       return side;
     }

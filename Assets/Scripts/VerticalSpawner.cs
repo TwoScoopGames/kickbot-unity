@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -44,10 +43,9 @@ public abstract class VerticalSpawner : MonoBehaviour {
     var bottom = Camera.main.transform.position.y - (cameraHeight / 2f) - (wallHeight / 2f);
 
     for (var y = top; y > bottom; y -= wallHeight) {
-      var prefab = Next(bottomItemTag);
-      GameObject instance = Instantiate(prefab, new Vector3(transform.position.x, y, 0f), Quaternion.identity);
-      bottomItemTag = instance.tag;
-      items.Add(instance);
+      var instances = OnSpawn(bottomItemTag, new Vector3(transform.position.x, y, 0f));
+      bottomItemTag = instances[0].tag;
+      items.AddRange(instances);
     }
 
     for (var i = items.Count - 1; i >= 0; i--) {
@@ -77,11 +75,9 @@ public abstract class VerticalSpawner : MonoBehaviour {
     }
 
     for (var y = bottom; y < top; y += wallHeight) {
-      var prefab = Next(topItemTag);
-      GameObject instance = Instantiate(prefab, new Vector3(transform.position.x, y, 0f), Quaternion.identity);
-      topItemTag = instance.tag;
-      items.AddRange(OnSpawn(instance));
-      items.Add(instance);
+      var instances = OnSpawn(topItemTag, new Vector3(transform.position.x, y, 0f));
+      topItemTag = instances[0].tag;
+      items.AddRange(instances);
     }
 
     for (var i = items.Count - 1; i >= 0; i--) {
@@ -93,8 +89,7 @@ public abstract class VerticalSpawner : MonoBehaviour {
     }
   }
 
-  protected abstract GameObject Next(string lastTag);
-  protected abstract GameObject[] OnSpawn(GameObject instance);
+  protected abstract IList<GameObject> OnSpawn(string lastTag, Vector3 position);
 
   private void SetVelocities() {
     foreach (var item in items) {
