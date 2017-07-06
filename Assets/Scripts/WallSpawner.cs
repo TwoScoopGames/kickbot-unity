@@ -20,7 +20,7 @@ public class WallSpawner : VerticalSpawner {
     var hasHazard = GameManager.instance.GetHazard() == side;
 
     var windowOrWall = Random.Range(0f, 1f) > 0.9f ? windows : walls;
-    var possibilities = lastTag == "Wall" ? windowOrWall : walls;
+    var possibilities = lastTag == "Wall" && !hasHazard ? windowOrWall : walls;
     var prefab = possibilities[Random.Range(0, possibilities.Length)];
     var instance = Instantiate(prefab, position, Quaternion.identity);
     instances.Add(instance);
