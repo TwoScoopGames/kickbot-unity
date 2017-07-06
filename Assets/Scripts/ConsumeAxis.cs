@@ -15,7 +15,7 @@ public class ConsumeAxis : MonoBehaviour {
 
   // Update is called once per frame
   void Update() {
-    var axis = Input.GetAxisRaw(axisName);
+    var axis = GameManager.instance.horizontalAxis;
     if (axis != axisValue) {
       axisWasRead = false;
       axisValue = axis;

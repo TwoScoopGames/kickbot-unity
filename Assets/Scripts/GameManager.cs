@@ -1,4 +1,8 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.Events;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour { 
 
@@ -13,6 +17,8 @@ public class GameManager : MonoBehaviour {
   private int highScore;
   private bool newBest;
 
+  public float horizontalAxis = 0;
+
   // Use this for initialization
   void Awake () {
 
@@ -26,12 +32,15 @@ public class GameManager : MonoBehaviour {
     DontDestroyOnLoad(gameObject);
 
     highScore = PlayerPrefs.GetInt("High Score");
+    setupTouchButtons ();
+    SceneManager.sceneLoaded += (d, e) => { setupTouchButtons(); };
   }
 
   public void StartGame() {
     if (!waitingToStart) {
       return;
     }
+
     waitingToStart = false;
 
     StartMusic.instance.Play();
@@ -60,6 +69,7 @@ public class GameManager : MonoBehaviour {
     var particlesDust = GameObject.Find("particles-dust").GetComponent<ParticleSystem>();
     var dustTransform = particlesDust.transform;
     dustTransform.eulerAngles = new Vector3 (-dustTransform.eulerAngles.x, 0, 0);
+
 
   }
 
@@ -93,10 +103,12 @@ public class GameManager : MonoBehaviour {
   }
 
   public void Restart() {
-    UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     waitingToStart = true;
     score = 0;
     newBest = false;
+    horizontalAxis = 0;
+     
   }
 
   private bool didIncrement;
@@ -119,9 +131,51 @@ public class GameManager : MonoBehaviour {
     hazardCounter = (hazardCounter + 1) % 3;
     return side;
   }
+    
 
   // Update is called once per frame
   void Update () {
     didIncrement = false;
+
+    if (Input.GetAxisRaw ("Horizontal") != 0){
+      horizontalAxis =  Input.GetAxisRaw ("Horizontal");
+    }
+
   }
+
+
+  void setupTouchButtons(){
+    addEventTriggerToButton (GameObject.Find("Left Button"), "PointerDown", (d) => {
+      horizontalAxis = -1;
+    });
+    addEventTriggerToButton (GameObject.Find("Left Button"), "PointerUp", (d) => {
+      horizontalAxis = 0;
+    });
+    addEventTriggerToButton (GameObject.Find("Right Button"), "PointerDown", (d) => {
+      horizontalAxis = 1;
+    });
+    addEventTriggerToButton (GameObject.Find("Right Button"), "PointerUp", (d) => {
+      horizontalAxis = 0;
+    });
+  }
+
+  void addEventTriggerToButton (GameObject button, string triggerType, UnityAction<BaseEventData> buttonFunction) {
+    EventTrigger trigger = button.GetComponent<EventTrigger>();
+    EventTrigger.Entry entry = new EventTrigger.Entry();
+    entry.eventID =  (EventTriggerType)System.Enum.Parse (typeof(EventTriggerType), triggerType);
+    entry.callback = new EventTrigger.TriggerEvent();
+    UnityEngine.Events.UnityAction<BaseEventData> call = new UnityEngine.Events.UnityAction<BaseEventData>(buttonFunction);
+    entry.callback.AddListener(call);
+    trigger.triggers.Add(entry);
+  }
+
+
+  void LateUpdate () {
+      horizontalAxis =  0;
+  }
+
+
+
+ 
+
 }

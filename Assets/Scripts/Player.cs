@@ -23,23 +23,7 @@ public class Player : MonoBehaviour {
   public AudioClip[] fallingSounds;
 
 
-  public bool touchButtonLeft;
 
-  public void TouchButtonLeftPressed() {
-    touchButtonLeft = true;
-  }
-  public void TouchButtonLeftUp() {
-    touchButtonLeft = false;
-  }
-
-  public bool touchButtonRight;
-
-  public void TouchButtonRightPressed() {
-    touchButtonRight = true;
-  }
-  public void TouchButtonRightUp() {
-    touchButtonRight = false;
-  }
 
   // Use this for initialization
   void Start () {
@@ -139,8 +123,8 @@ public class Player : MonoBehaviour {
     }
 
     var axis = horizontalAxis.GetAxisRaw();
-    var left = axis < 0 || touchButtonLeft;
-    var right = axis > 0 || touchButtonRight;
+    var left = axis < 0;
+    var right = axis > 0;
 
     var wallIsOnLeft = transform.position.x < 0;
 
