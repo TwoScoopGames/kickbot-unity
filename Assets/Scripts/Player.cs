@@ -65,37 +65,37 @@ public class Player : MonoBehaviour {
   }
 
   void OnTriggerEnter2D(Collider2D other) {
-    if (onWall) {
-      particlesDust.Play();
-      return;
-    }
     if (other.gameObject.tag == "Wall" || other.gameObject.tag == "Window") {
-      movement.velocity.x = 0;
-      movement.velocity.y = 0;
-      onWall = true;
-      leftJumpTime = -1;
-      rightJumpTime = -1;
-
-      animator.SetTrigger("Land");
-      particlesKick.Play();
-
-      var wallIsOnLeft = transform.position.x < 0;
-      if (wallIsOnLeft) {
-        var v = transform.position;
-        v.x = other.transform.position.x +
-          (other.bounds.size.x / 2f) +
-          (collider.bounds.size.x / 2f);
-        transform.position = v;
-
-        renderer.flipX = false;
+      if (onWall) {
+        particlesDust.Play();
       } else {
-        var v = transform.position;
-        v.x = other.transform.position.x -
-          (other.bounds.size.x / 2f) -
-          (collider.bounds.size.x / 2f);
-        transform.position = v;
+        movement.velocity.x = 0;
+        movement.velocity.y = 0;
+        onWall = true;
+        leftJumpTime = -1;
+        rightJumpTime = -1;
 
-        renderer.flipX = true;
+        animator.SetTrigger("Land");
+        particlesKick.Play();
+
+        var wallIsOnLeft = transform.position.x < 0;
+        if (wallIsOnLeft) {
+          var v = transform.position;
+          v.x = other.transform.position.x +
+            (other.bounds.size.x / 2f) +
+            (collider.bounds.size.x / 2f);
+          transform.position = v;
+
+          renderer.flipX = false;
+        } else {
+          var v = transform.position;
+          v.x = other.transform.position.x -
+            (other.bounds.size.x / 2f) -
+            (collider.bounds.size.x / 2f);
+          transform.position = v;
+
+          renderer.flipX = true;
+        }
       }
     } else if (other.gameObject.tag == "Hazard") {
       isDead = true;
