@@ -4,6 +4,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+
 public class GameManager : MonoBehaviour { 
 
   public static GameManager instance;
@@ -18,6 +19,8 @@ public class GameManager : MonoBehaviour {
   private bool newBest;
 
   public float horizontalAxis = 0;
+  public Sprite[] tapIconsLeft;
+  public Sprite[] tapIconsRight;
 
   // Use this for initialization
   void Awake () {
@@ -34,6 +37,11 @@ public class GameManager : MonoBehaviour {
     highScore = PlayerPrefs.GetInt("High Score");
     setupTouchButtons ();
     SceneManager.sceneLoaded += (d, e) => { setupTouchButtons(); };
+
+    if (Application.isMobilePlatform) {
+      GameObject.Find ("Left Hand").GetComponent<UIAnimation> ().frames = tapIconsLeft;
+      GameObject.Find ("Right Hand").GetComponent<UIAnimation> ().frames = tapIconsRight;
+    }
   }
 
   public void StartGame() {

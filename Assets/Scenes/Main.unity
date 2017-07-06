@@ -13785,6 +13785,12 @@ MonoBehaviour:
   gameOverScreen: {fileID: 1796790192631064, guid: bf12c953b934942f986f7a1645800e33,
     type: 2}
   horizontalAxis: 0
+  tapIconsLeft:
+  - {fileID: 21300000, guid: bdefc81e524ad49ba9259546433e1a5f, type: 3}
+  - {fileID: 21300002, guid: bdefc81e524ad49ba9259546433e1a5f, type: 3}
+  tapIconsRight:
+  - {fileID: 21300002, guid: bdefc81e524ad49ba9259546433e1a5f, type: 3}
+  - {fileID: 21300000, guid: bdefc81e524ad49ba9259546433e1a5f, type: 3}
 --- !u!4 &1482808219
 Transform:
   m_ObjectHideFlags: 0
